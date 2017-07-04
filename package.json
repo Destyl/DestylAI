@@ -1,0 +1,14 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "description": "Screep AI",
+  "main": "main.js",
+  "scripts": {
+    "remote": "node remote.js"
+  },
+  "author": "Destyl",
+  "license": "ISC",
+  "devDependencies": {
+    "screeps-remote": "^1.0.1"
+  }
+}

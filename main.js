@@ -6,6 +6,8 @@ let upgrader = require('upgrader');
 module.exports.loop = function () {
 
 
+    console.log("No Smoke!");
+
 
     // TODO: clean up memory
 

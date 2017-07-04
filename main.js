@@ -44,23 +44,26 @@ module.exports.loop = function () {
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
 
-    console.log("list of harvesters: " + harvesters);
-    console.log("list of upgraders: " + upgraders);
-
-    const MinHarvester = 10; // calculate based on Sources
-    const MinUpgrader = 2;
+    const MaxHarvester = 10; // calculate based on Sources
+    const MaxUpgrader = 2;
 
     let name = undefined;
     let numberOfHarvesters = _.sum(harvesters); //(Game.creeps, (c) => c.memory.role === 'harvester');
     let numberOfUpgrader = _.sum(upgraders); //(Game.creeps, (c) => c.memory.role === 'upgrader');
 
+    console.log("number of upgraders" + numberOfUpgrader );
+    console.log("max number of upgraders" +  MaxUpgrader);
+    console.log("number < max " + numberOfUpgrader < MaxUpgrader);
+    console.log("number of harvesters" + numberOfHarvesters );
+    console.log("max number of harvesters" +  MaxHarvester);
+    console.log("number < max " + numberOfHarvesters < MaxHarvester);
     // if there are less then the min amount of harvesters create new
-    if (numberOfUpgrader < MinUpgrader) {
+    if (numberOfUpgrader < MaxUpgrader) {
         // TODO: add to building queue
         name = Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE], undefined,
             {role: 'upgrader', working: false});
     }
-    else if (numberOfHarvesters < MinHarvester) {
+    else if (numberOfHarvesters < MaxHarvester) {
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
             {role: 'harvester', working: false});
     }
@@ -72,17 +75,11 @@ module.exports.loop = function () {
     // alert(i);              // displays 2
 
     harvesters.forEach(creep =>{
-        console.log("Harvester: " + creep);
-        // if(!creep.working){
             harvester.run(creep);
-        // }
     });
 
     upgraders.forEach(creep =>{
-        console.log("Harvester: " + creep);
-        // if(!creep.working){
         upgrader.run(creep);
-        // }
     });
 
 

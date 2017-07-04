@@ -68,14 +68,14 @@ module.exports.loop = function () {
     harvesters.forEach(creep =>{
         console.log("Harvester: " + creep);
         // if(!creep.working){
-            harvester.harvest(creep);
+            harvester.run(creep);
         // }
     });
 
     upgraders.forEach(creep =>{
         console.log("Harvester: " + creep);
         // if(!creep.working){
-        upgrader.upgrade(creep);
+        upgrader.run(creep);
         // }
     });
 

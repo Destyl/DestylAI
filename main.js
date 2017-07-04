@@ -8,6 +8,12 @@ module.exports.loop = function () {
 
     // TODO: clean up memory
 
+    for(let i in Memory.creeps) {
+        if(!Game.creeps[i]) {
+            delete Memory.creeps[i];
+        }
+    }
+
     // TODO: prototyping stuff
 
     // TODO: random walk to avoid traffic jamming

@@ -48,8 +48,11 @@ module.exports.loop = function () {
     const MaxUpgrader = 2;
 
     let name = undefined;
-    let numberOfHarvesters = _.sum(harvesters); //(Game.creeps, (c) => c.memory.role === 'harvester');
-    let numberOfUpgrader = _.sum(upgraders); //(Game.creeps, (c) => c.memory.role === 'upgrader');
+    let numberOfHarvesters = 0;
+    harvesters.forEach( () => numberOfHarvesters++); //(Game.creeps, (c) => c.memory.role === 'harvester');
+    let numberOfUpgrader = 0;
+    upgraders.forEach( () => numberOfUpgrader++);
+        //_.sum(upgraders); //(Game.creeps, (c) => c.memory.role === 'upgrader');
 
     console.log("number of upgraders" + numberOfUpgrader );
     console.log("max number of upgraders" +  MaxUpgrader);

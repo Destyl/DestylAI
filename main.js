@@ -2,6 +2,7 @@ let _ = require('lodash');
 
 let harvester = require('harvester');
 let upgrader = require('upgrader');
+let builder = require('builder');
 
 module.exports.loop = function () {
 
@@ -40,12 +41,16 @@ module.exports.loop = function () {
     // TODO: create new creeps and assign them their roles (creep factory)
     // roles: harvester, builder, upgrader, carry?, defender, repairer, planner, claimer, miner
 
+    // Memory.
+    let buildingQueue = FIND_MY_CONSTRUCTION_SITES;
 
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
+    let builders = _.filter(Game.creeps, (c) => c.memory.role === 'builder');
 
-    const MaxHarvester = 10; // calculate based on Sources
+    const MaxHarvester = 4; // calculate based on Sources entries
     const MaxUpgrader = 2;
+    const MaxBuilders = 2;
 
     let name = undefined;
     let numberOfHarvesters = 0;
@@ -53,6 +58,8 @@ module.exports.loop = function () {
     let numberOfUpgrader = 0;
     upgraders.forEach( () => numberOfUpgrader++);
         //_.sum(upgraders); //(Game.creeps, (c) => c.memory.role === 'upgrader');
+    let numberOfBuilders = 0;
+    builders.forEach( () => numberOfBuilders++);
 
     console.log("number of upgraders" + numberOfUpgrader );
     console.log("max number of upgraders" +  MaxUpgrader);
@@ -70,6 +77,10 @@ module.exports.loop = function () {
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
             {role: 'harvester', working: false});
     }
+    else if(numberOfBuilders < MaxBuilders){
+        name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
+            {role: 'buidler', working: false});
+    }
 
     // var queue = [];
     // queue.push(2);         // queue is now [2]
@@ -84,6 +95,9 @@ module.exports.loop = function () {
     upgraders.forEach(creep =>{
         upgrader.run(creep);
     });
+    builders.forEach(creep =>{
+        builder.run(creep, buildingQueue);
+    })
 
 
     //TODO:  Memory.creepBuildingQueue = [];

@@ -99,7 +99,7 @@ module.exports.loop = function () {
         upgrader.run(creep);
     });
     builders.forEach(creep =>{
-        builder.run(creep, buildingQueue);
+        builder.run(creep);//, buildingQueue);
     })
 
 

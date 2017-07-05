@@ -1,5 +1,5 @@
 
-modules.exports = {
+module.exports = {
 
     run: (creep, buildingQueue) => {
 

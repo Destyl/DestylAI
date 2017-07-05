@@ -42,7 +42,8 @@ module.exports.loop = function () {
     // roles: harvester, builder, upgrader, carry?, defender, repairer, planner, claimer, miner
 
     // Memory.
-    let buildingQueue = FIND_MY_CONSTRUCTION_SITES;
+    let buildingQueue = Game.spawns.Spawn1.find(FIND_MY_CONSTRUCTION_SITES);
+
 
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
@@ -61,12 +62,14 @@ module.exports.loop = function () {
     let numberOfBuilders = 0;
     builders.forEach( () => numberOfBuilders++);
 
-    console.log("number of upgraders" + numberOfUpgrader );
-    console.log("max number of upgraders" +  MaxUpgrader);
-    console.log("number < max " + numberOfUpgrader < MaxUpgrader);
-    console.log("number of harvesters" + numberOfHarvesters );
-    console.log("max number of harvesters" +  MaxHarvester);
-    console.log("number < max " + numberOfHarvesters < MaxHarvester);
+    // console.log("number of upgraders" + numberOfUpgrader );
+    // console.log("max number of upgraders" +  MaxUpgrader);
+    // console.log("number < max " + numberOfUpgrader < MaxUpgrader);
+    // console.log("number of harvesters" + numberOfHarvesters );
+    // console.log("max number of harvesters" +  MaxHarvester);
+    // console.log("number < max " + numberOfHarvesters < MaxHarvester);
+
+
     // if there are less then the min amount of harvesters create new
     if (numberOfUpgrader < MaxUpgrader) {
         // TODO: add to building queue

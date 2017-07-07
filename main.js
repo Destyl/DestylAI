@@ -82,7 +82,7 @@ module.exports.loop = function () {
     }
     else if(numberOfBuilders < MaxBuilders){
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
-            {role: 'buidler', working: false});
+            {role: 'builder', working: false});
     }
 
     // var queue = [];

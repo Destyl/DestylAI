@@ -79,7 +79,7 @@ module.exports.loop = function () {
             {role: 'upgrader', working: false});
     }
     else if (numberOfHarvesters < MaxHarvester) {
-        let sourceId = Memory.sources[numberOfHarvesters%Memory.sources.length];
+        let sourceId = Memory.sources[numberOfHarvesters%Memory.sources.length].id;
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
             {role: 'harvester', working: false, sourceID: sourceId});
     }

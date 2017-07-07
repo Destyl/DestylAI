@@ -27,7 +27,7 @@ module.exports = {
             // if creep is supposed to transfer energy to the building
             if (creep.memory.working === true) {
 
-                let destination = Game.getObjectById((buildingQueue[0]));
+                let destination = Game.getObjectById((buildingQueue[0].id));
 
                 // try to build
                 if(creep.build(destination) === ERR_NOT_IN_RANGE) {

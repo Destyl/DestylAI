@@ -50,9 +50,9 @@ module.exports.loop = function () {
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
     let builders = _.filter(Game.creeps, (c) => c.memory.role === 'builder');
 
-    const MaxHarvester = 4; // calculate based on Sources entries
+    const MaxHarvester = 8; // calculate based on Sources entries
     const MaxUpgrader = 2;
-    const MaxBuilders = 2;
+    const MaxBuilders = 4;
 
     let name = undefined;
     // TODO: _.sum

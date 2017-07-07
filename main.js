@@ -42,7 +42,7 @@ module.exports.loop = function () {
     // roles: harvester, builder, upgrader, carry?, defender, repairer, planner, claimer, miner
 
     // Memory.
-    let buildingQueue = Game.spawns.Spawn1.room.find(FIND_MY_CONSTRUCTION_SITES);
+    Memory.buildingQueue = Game.spawns.Spawn1.room.find(FIND_MY_CONSTRUCTION_SITES);
 
 
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');

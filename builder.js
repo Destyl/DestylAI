@@ -31,7 +31,7 @@ module.exports = {
                 // try to build
                 if (creep.build(destination) === ERR_NOT_IN_RANGE) {
                     // if not in range, move towards the structure
-                    creep.moveTo(destination);
+                    creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
             else if (creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1).length) {
@@ -48,7 +48,7 @@ module.exports = {
                 // try to harvest energy, if the source is not in range
                 if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
                     // move towards the source
-                    creep.moveTo(source);
+                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
         }

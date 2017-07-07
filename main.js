@@ -44,6 +44,7 @@ module.exports.loop = function () {
     // Memory.
     Memory.buildingQueue = Game.spawns.Spawn1.room.find(FIND_MY_CONSTRUCTION_SITES);
 
+    Memory.sources = Game.spawns.Spawn1.room.find(FIND_SOURCES_ACTIVE);
 
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
@@ -54,6 +55,7 @@ module.exports.loop = function () {
     const MaxBuilders = 2;
 
     let name = undefined;
+    // TODO: _.sum
     let numberOfHarvesters = 0;
     harvesters.forEach( () => numberOfHarvesters++); //(Game.creeps, (c) => c.memory.role === 'harvester');
     let numberOfUpgrader = 0;
@@ -77,8 +79,9 @@ module.exports.loop = function () {
             {role: 'upgrader', working: false});
     }
     else if (numberOfHarvesters < MaxHarvester) {
+        let sourceId = Memory.sources[numberOfHarvesters%Memory.sources.length];
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,
-            {role: 'harvester', working: false});
+            {role: 'harvester', working: false, sourceID: sourceId});
     }
     else if(numberOfBuilders < MaxBuilders){
         name = Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE], undefined,

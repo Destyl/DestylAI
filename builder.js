@@ -1,11 +1,10 @@
-
 module.exports = {
 
     run: (creep) => {
 
         let buildingQueue = Memory.buildingQueue;
 
-        if(Game.getObjectById((buildingQueue[0]))=== null){
+        if (Game.getObjectById((buildingQueue[0])) === null) {
             buildingQueue.shift();
         }
 
@@ -30,13 +29,19 @@ module.exports = {
                 let destination = Game.getObjectById((buildingQueue[0].id));
 
                 // try to build
-                if(creep.build(destination) === ERR_NOT_IN_RANGE) {
+                if (creep.build(destination) === ERR_NOT_IN_RANGE) {
                     // if not in range, move towards the structure
                     creep.moveTo(destination);
                 }
             }
+            else if (creep.pos.findInRange(FIND_DROPPED_ENERGY, 1).length) {
+                // only finds energy directly next to the creep
+                let energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 1);
+                creep.pickup(energy[0]);
+
+            }
             // if creep is supposed to harvest energy from source
-                // TODO: take energy from storage instead of harvesting it
+            // TODO: take energy from storage instead of harvesting it
             else {
                 // find closest source
                 let source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
@@ -49,7 +54,7 @@ module.exports = {
         }
     },
 
-    repair: function(creep){
+    repair: function (creep) {
         creep.say("I should repair");
     }
 };

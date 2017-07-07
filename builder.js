@@ -16,10 +16,10 @@ module.exports = {
         else {
 
             // a function to run the logic for this role
-            if (creep.memory.building === true && creep.carry.energy === 0) {
-                creep.memory.building = false;
+            if (creep.memory.working === true && creep.carry.energy === 0) {
+                creep.memory.working = false;
             }
-            else if (creep.memory.building === false && creep.carry.energy === creep.carryCapacity) {
+            else if (creep.memory.working === false && creep.carry.energy === creep.carryCapacity) {
                 // switch state
                 creep.memory.working = true;
             }

@@ -34,9 +34,9 @@ module.exports = {
                     creep.moveTo(destination);
                 }
             }
-            else if (creep.pos.findInRange(FIND_DROPPED_ENERGY, 1).length) {
+            else if (creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1).length) {
                 // only finds energy directly next to the creep
-                let energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 1);
+                let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1);
                 creep.pickup(energy[0]);
 
             }

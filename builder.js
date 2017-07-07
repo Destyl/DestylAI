@@ -30,7 +30,7 @@ module.exports = {
                 let destination = Game.getObjectById((buildingQueue[0]));
 
                 // try to build
-                if(destination === ERR_NOT_IN_RANGE) {
+                if(creep.build(destination) === ERR_NOT_IN_RANGE) {
                     // if not in range, move towards the structure
                     creep.moveTo(destination);
                 }

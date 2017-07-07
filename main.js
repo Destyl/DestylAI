@@ -46,15 +46,16 @@ module.exports.loop = function () {
 
     Memory.sources = Game.spawns.Spawn1.room.find(FIND_SOURCES_ACTIVE);
 
-    Memory.tickNr = Memory.tickNr++;
+    Memory.tickNr++;
+
 
     let harvesters = _.filter(Game.creeps, (c) => c.memory.role === 'harvester');
     let upgraders = _.filter(Game.creeps, (c) => c.memory.role === 'upgrader');
     let builders = _.filter(Game.creeps, (c) => c.memory.role === 'builder');
 
-    const MaxHarvester = 8; // calculate based on Sources entries
+    const MaxHarvester = 6; // calculate based on Sources entries
     const MaxUpgrader = 2;
-    const MaxBuilders = 4;
+    const MaxBuilders = 3;
 
     let name = undefined;
     // TODO: _.sum

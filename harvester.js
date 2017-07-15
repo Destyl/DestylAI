@@ -21,6 +21,8 @@ module.exports = {
 
             if (Game.spawns.Spawn1.energy === Game.spawns.Spawn1.energyCapacity) {
 
+                // something is broken here
+                // the filter returns the same shit every time
                 let extensions = creep.room.find(FIND_STRUCTURES,
                     (s) => s.structureType === STRUCTURE_EXTENSION && s.energy !== s.energyCapacity).map(c => c.id);
                 console.log(extensions);
